@@ -1,51 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Get Application Form</title>
-  <style>
-    #applicationForm {
-      display: none;
-      margin-top: 20px;
-    }
-  </style>
-  <script>
-    function showForm() {
-      const rollNo = document.getElementById("rollNo").value;
-      if (rollNo.trim() === "") {
-        alert("Please enter a roll number.");
-        return false;
-      }
-      document.getElementById("applicationForm").style.display = "block";
-      document.getElementById("rollNoForm").style.display = "none";
-      document.getElementById("displayRollNo").textContent = rollNo;
-      return false;
-    }
-  </script>
+    <title>Exam Date Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
-  <h2>Enter Roll Number to Get Application Form</h2>
-  <form id="rollNoForm" onsubmit="return showForm();">
-    <label for="rollNo">Roll Number:</label>
-    <input type="text" id="rollNo" name="rollNo" required>
-    <button type="submit">Submit</button>
-  </form>
+    <h2>Enter Roll Number to Get Exam Date</h2>
+    
+    <label for="roll">Roll No:</label>
+    <input type="text" id="roll" placeholder="Enter your roll number" />
+    <button onclick="getExamDate()">Get Exam Date</button>
 
-  <div id="applicationForm">
-    <h3>Application Form for Roll No: <span id="displayRollNo"></span></h3>
-    <form>
-      <label for="name">Full Name:</label><br>
-      <input type="text" id="name" name="name"><br><br>
+    <div id="result"></div>
 
-      <label for="dob">Date of Birth:</label><br>
-      <input type="date" id="dob" name="dob"><br><br>
+    <script>
+        const examDates = {
+            "101": "2025-06-10",
+            "102": "2025-06-12",
+            "103": "2025-06-15",
+            // Add more roll numbers and dates as needed
+        };
 
-      <label for="course">Course:</label><br>
-      <input type="text" id="course" name="course"><br><br>
+        function getExamDate() {
+            const roll = document.getElementById("roll").value.trim();
+            const date = examDates[roll];
 
-      <input type="submit" value="Submit Application">
-    </form>
-  </div>
+            if (date) {
+                document.getElementById("result").innerText = `Exam Date: ${date}`;
+            } else {
+                document.getElementById("result").innerText = "Roll number not found.";
+            }
+        }
+    </script>
 
 </body>
 </html>
