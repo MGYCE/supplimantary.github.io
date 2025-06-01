@@ -1,23 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Application Form Print</title>
-    <script>
-        function getApplicationForm() {
-            var rollNo = document.getElementById("rollNo").value;
-            if (rollNo === "123") {
-                alert("Please enter your Roll Number.");
-                return;
-            }
-            // Redirect or open a print page with the roll number (simulated)
-            window.open("application_form.html?rollNo=" + rollNo, "_blank");
-        }
-    </script>
+  <title>Get Application Form</title>
+  <style>
+    #applicationForm {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    function showForm() {
+      const rollNo = document.getElementById("rollNo").value;
+      if (rollNo.trim() === "") {
+        alert("Please enter a roll number.");
+        return false;
+      }
+      document.getElementById("applicationForm").style.display = "block";
+      document.getElementById("rollNoForm").style.display = "none";
+      document.getElementById("displayRollNo").textContent = rollNo;
+      return false;
+    }
+  </script>
 </head>
 <body>
-    <h2>Get Your Application Form</h2>
-    <label for="rollNo">Enter Roll No:</label>
-    <input type="text" id="rollNo" name="rollNo" placeholder="e.g. 123456">
-    <button onclick="getApplicationForm()">Get Application Form</button>
+
+  <h2>Enter Roll Number to Get Application Form</h2>
+  <form id="rollNoForm" onsubmit="return showForm();">
+    <label for="rollNo">Roll Number:</label>
+    <input type="text" id="rollNo" name="rollNo" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="applicationForm">
+    <h3>Application Form for Roll No: <span id="displayRollNo"></span></h3>
+    <form>
+      <label for="name">Full Name:</label><br>
+      <input type="text" id="name" name="name"><br><br>
+
+      <label for="dob">Date of Birth:</label><br>
+      <input type="date" id="dob" name="dob"><br><br>
+
+      <label for="course">Course:</label><br>
+      <input type="text" id="course" name="course"><br><br>
+
+      <input type="submit" value="Submit Application">
+    </form>
+  </div>
+
 </body>
 </html>
