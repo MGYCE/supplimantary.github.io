@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Form Print</title>
+    <script>
+        function getApplicationForm() {
+            var rollNo = document.getElementById("rollNo").value;
+            if (rollNo === "") {
+                alert("Please enter your Roll Number.");
+                return;
+            }
+            // Redirect or open a print page with the roll number (simulated)
+            window.open("application_form.html?rollNo=" + rollNo, "_blank");
+        }
+    </script>
+</head>
+<body>
+    <h2>Get Your Application Form</h2>
+    <label for="rollNo">Enter Roll No:</label>
+    <input type="text" id="rollNo" name="rollNo" placeholder="e.g. 123456">
+    <button onclick="getApplicationForm()">Get Application Form</button>
+</body>
+</html>
