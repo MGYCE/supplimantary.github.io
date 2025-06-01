@@ -6,8 +6,8 @@
   <script>
     // Simulated backend data
     const examData = {
-      '12345': [
-        { exam: 'Math Final', applicationId: 'APP001' },
+      'EX119': [
+        { exam: 'First Term (Back)', applicationId: '10-06-2025' },
         { exam: 'Science Midterm', applicationId: 'APP002' }
       ],
       '67890': [
@@ -40,7 +40,7 @@
       const examSelect = document.getElementById('examSelect');
       const appIdDisplay = document.getElementById('appId');
       const appId = examSelect.value;
-      appIdDisplay.textContent = appId ? `Application ID: ${appId}` : '';
+      appIdDisplay.textContent = appId ? `Exam Date: ${appId}` : '';
     }
   </script>
 </head>
